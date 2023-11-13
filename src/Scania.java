@@ -23,13 +23,14 @@ public class Scania extends Car{
         }
 
     }
-    public String hejdå;
+    public String hej;
+
     public double getflakVinkel() {
         return flakVinkel;
     }
 
     public double speedFactor() {
-        return 4;
+        return 1;
     }
 
 
