@@ -3,12 +3,13 @@ import java.util.LinkedList;
 
 public class CarTransporter extends Car{
     private final int kapacitet;
-    public boolean rampUppe;
+    private boolean rampUppe;
     private LinkedList<Car> loadedCars = new LinkedList<>();
 
 
+
     public CarTransporter(int kapacitet) {
-        super(2, "Daf", 225, Color.gray);
+        super(10, 2, "Daf", 225, Color.gray);
         this.kapacitet = kapacitet;
         this.rampUppe = true;
 
@@ -34,26 +35,18 @@ public class CarTransporter extends Car{
         }
     }
     public void raiseRamp() {
-        if (loadedCars.isEmpty()) {
-            rampUppe = true;
-            System.out.println("Ramp höjd");
-        } else {
-            System.out.println("Kan inte höja ramp om transporten är lastad");
-        }
+        rampUppe = true;
+        System.out.println("Ramp höjd");
+
     }
     public void loadCar(Car bil) {
-        if (!rampUppe && loadedCars.size() < kapacitet && !(bil instanceof CarTransporter)) {
+        if (!rampUppe && (loadedCars.size() < kapacitet) && bil.getLength() <= 2) {
             double distance = calculateDistance(bil.getPosition(), getPosition());
-
-            if (loadedCars.size() < kapacitet && distance < 2) {
+            if (distance < 2) {
                 loadedCars.add(bil);
                 System.out.println("Bil lastad på transportör.");
             }
-
-        }else{
-            System.out.println("Kunde inte lasta på bilen. Kolla status på både ramp och Biltransportörens hastighet.");
         }
-        System.out.println("Dubbelkolla rampen och överskrid inte kapaciteten");
     }
 
     private double calculateDistance(Point pos1, Point pos2) {
@@ -62,18 +55,17 @@ public class CarTransporter extends Car{
 
 
     public void unloadCar() {
-        if (!rampUppe && getAntalLastadeBilar() > 0) {
+       if (!rampUppe && getAntalLastadeBilar() > 0) {
 
-            Point newCarPosition = getNewCarPosition();
-            loadedCars.get(loadedCars.size()-1).setPosition(newCarPosition);
-            loadedCars.remove(loadedCars.size()-1);
-            System.out.println("Bil lastades av från biltransporten.");
+       loadedCars.get(loadedCars.size()-1).setPosition(getNewCarPosition());
+       loadedCars.remove(loadedCars.size()-1);
+       System.out.println("Bil lastades av från biltransporten.");
 
-        } else {
-            System.out.println("Kunde inte lasta på bilen. Kolla status på både ramp och Biltransportens hastighet.");
+       } else {
+       System.out.println("Kunde inte lasta på bilen. Kolla status på både ramp och Biltransportens hastighet.");
+       }
+
         }
-    }
-
     private Point getNewCarPosition() {
         Point transporterPosition = getPosition();
         double angle = Math.toRadians(getDirection() + 180);
@@ -91,6 +83,23 @@ public class CarTransporter extends Car{
     public Car getSenasteBilen() {
         return loadedCars.get(loadedCars.size()-1);
     }
+
+    public LinkedList<Car> getLoadedCars() {
+        return loadedCars;
+    }
+
+    @Override
+    public void gas(double amount) {
+        if (rampUppe)
+            super.gas(amount);
+    }
+
+    public boolean getOmRampUppe() {
+        return rampUppe;
+    }
+
 }
+
+
 
 
