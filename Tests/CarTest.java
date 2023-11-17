@@ -191,9 +191,10 @@ class CarTest {
 
     @Test
     void testchangeflakVinkel() {
-        scania.changeflakVinkel(50);
+        scania.changeFlak(50);
         assertEquals(50, scania.getflakVinkel());
-        scania.changeflakVinkel(70);
+
+        scania.changeFlak(70);
         assertEquals(70, scania.getflakVinkel());
     }
 
@@ -219,5 +220,6 @@ class CarTest {
     void testGetMaxAntalBilar() {
         int expectedMaxAntalBilar = 4;
         assertEquals(expectedMaxAntalBilar, saabVerkstad.getMaxAntalBilar());
+
     }
 }
