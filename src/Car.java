@@ -9,7 +9,7 @@ public abstract class Car implements Movable {
     private Color color;
     private String modelName;
     private Point position;
-    private double direction;
+    private int direction;
 
 
 

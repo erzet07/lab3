@@ -30,7 +30,17 @@ public class Saab95 extends Car {
         return getEnginePower() * 0.1 * turbo;
     }
 
+    public static void main(String[] args) {
+        Saab95 s = new Saab95();
+        System.out.println(s.getDirection());
+        s.turnLeft();
+        s.turnLeft();
+        System.out.println((int)s.getDirection());
+        s.turnLeft();
+        s.turnLeft();
+        System.out.println(-180%360);
 
+    }
 
     }
 

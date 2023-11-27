@@ -22,6 +22,7 @@ public class CarController {
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
     // A list of cars, modify if needed
+
     public ArrayList<Car> cars = new ArrayList<>();
 
     //methods:
@@ -54,11 +55,19 @@ public class CarController {
                 int x = (int) Math.round(car.getPosition().getX());
                 int y = (int) Math.round(car.getPosition().getY());
                 //if (x <= frame.getSize().width)
-                if (notWithinBound(x,y)) {
-                    x = 0;  //Currently cars only move in x dimension
 
-                    car.setPosition(new Point(0,y));
+                if (ifAboutToHitWall(car, x)) {
+                    car.stopEngine();
+                    car.turnLeft();
+                    car.turnLeft();
+                    car.startEngine();
+                    if (x >= 684) {
+                        car.setPosition(new Point(684,y));
 
+                    }
+
+                    else {car.setPosition(new Point(0,y));
+                    }
                 }
                 frame.drawPanel.moveCar(x,y,car);
                 // repaint() calls the paintComponent method of the panel
@@ -68,11 +77,11 @@ public class CarController {
 
         }
 
-
-
-        private boolean notWithinBound(int x, int y) {
-            return !(x <= frame.getSize().width && x >= 0 && y <= frame.getSize().height - 240 && y >= 0 );
+        private static boolean ifAboutToHitWall(Car car, int x) {
+            return (x <= 0 && (car.getDirection() == 180 || car.getDirection() == -180)) || (x >= 684 && (int) car.getDirection() == 0);
         }
+
+
     }
 
     // Calls the gas method for each car once
