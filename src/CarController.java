@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -55,6 +56,8 @@ public class CarController {
                 //if (x <= frame.getSize().width)
                 if (notWithinBound(x,y)) {
                     x = 0;  //Currently cars only move in x dimension
+
+                    car.setPosition(new Point(0,y));
 
                 }
                 frame.drawPanel.moveCar(x,y,car);
