@@ -51,10 +51,10 @@ class CarTest {
     @Test
     void turboState() {
         saab.setTurboOn();
-        assertTrue(saab.setTurboOn());
+        assertTrue(saab.getTurboState());
 
         saab.setTurboOff();
-        assertFalse(saab.setTurboOff());
+        assertFalse(saab.getTurboState());
     }
 
     @Test

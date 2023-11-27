@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.ArrayList;
 
 public abstract class Car implements Movable {
     private int length;
@@ -9,6 +10,9 @@ public abstract class Car implements Movable {
     private String modelName;
     private Point position;
     private double direction;
+
+
+
 
     public Car(int length, int nrDoors, String modelName, double enginePower, Color color) {
         this.length = length;
@@ -27,14 +31,12 @@ public abstract class Car implements Movable {
         this.position = newPosition;
     }
     public void move() {
-        Point initialPosition = getPosition();
+
         double newX = position.getX() + Math.cos(Math.toRadians(direction)) * getCurrentSpeed();
         double newY = position.getY() + Math.sin(Math.toRadians(direction)) * getCurrentSpeed();
         position.setLocation(newX, newY);
 
-        if (initialPosition.equals(position)) {
-            System.out.println("Test failed");
-        }
+
     }
 
     public int getLength(){return length;}
@@ -68,7 +70,11 @@ public abstract class Car implements Movable {
     }
 
     public void startEngine() {
-        currentSpeed = 0.1;
+        if (getCurrentSpeed() > 0) {
+            System.out.println("Engine already ON");
+        }
+        else {
+        currentSpeed = 0.1;}
     }
 
     public void stopEngine() {
@@ -107,5 +113,6 @@ public abstract class Car implements Movable {
             decrementSpeed(amount);
         }
     }
+
 
 }

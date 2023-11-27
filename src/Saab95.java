@@ -1,28 +1,39 @@
 import java.awt.*;
+import java.util.LinkedList;
 
 public class Saab95 extends Car {
-    public boolean turboOn = false;
+    private boolean turboOn = false;
 
 
     public Saab95() {
         super(2,2,"Saab95",125,Color.red);
     }
 
-    public boolean setTurboOn() {
-        return turboOn = true;
+    public void setTurboOn() {
+        turboOn = true;
+
+
     }
 
-    public boolean setTurboOff() {
-        return turboOn = false;
+    public boolean getTurboState() {
+        return turboOn;
     }
+    public void setTurboOff() {
+        turboOn = false;
+    }
+
 
 
     public double speedFactor() {
         double turbo = 1;
-        if (turboOn) turbo = 1.3;
-        return getEnginePower() * 0.01 * turbo;
+        if (turboOn) {turbo = 100;}
+        return getEnginePower() * 0.1 * turbo;
     }
 
+
+
     }
+
+
 
 
