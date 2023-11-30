@@ -30,7 +30,7 @@ public class DrawPanel extends JPanel{
 
 
     // TODO: Make this general for all cars
-     void  moveCar(int x, int y,Car car){
+     void  moveCar(int x, int y,Vehicles car){
 
 
          if (car instanceof Saab95) {

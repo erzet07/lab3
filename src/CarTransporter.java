@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.util.LinkedList;
 
-public class CarTransporter extends Car{
+public class CarTransporter <T extends Car> extends Vehicles{
 
 
 
@@ -115,7 +115,11 @@ public class CarTransporter extends Car{
         return rampState;
     }
 
+    public static void main(String[] args) {
+        CarTransporter test = new CarTransporter(2);
+        test.lowerRamp();
 
+    }
 
 }
 
