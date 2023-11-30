@@ -42,6 +42,9 @@ public class CarController {
         // Start the timer
         cc.timer.start();
 
+
+
+
     }
 
     /* Each step the TimerListener moves all the cars in the list and tells the
@@ -57,17 +60,20 @@ public class CarController {
                 //if (x <= frame.getSize().width)
 
                 if (ifAboutToHitWall(car, x)) {
-                    car.stopEngine();
-                    car.turnLeft();
-                    car.turnLeft();
-                    car.startEngine();
                     if (x >= 684) {
                         car.setPosition(new Point(684,y));
+                        x = 684;
 
                     }
 
                     else {car.setPosition(new Point(0,y));
+                        x = 0;
                     }
+                    car.stopEngine();
+                    car.turnLeft();
+                    car.turnLeft();
+                    car.startEngine();
+
                 }
                 frame.drawPanel.moveCar(x,y,car);
                 // repaint() calls the paintComponent method of the panel
@@ -129,6 +135,7 @@ public class CarController {
             car.brake(amount/100);
         }
     }
+
 
 }
 

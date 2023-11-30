@@ -26,23 +26,21 @@ public class Saab95 extends Car {
 
     public double speedFactor() {
         double turbo = 1;
-        if (turboOn) {turbo = 100;}
+        if (turboOn) {turbo = 1.5;}
         return getEnginePower() * 0.1 * turbo;
     }
 
     public static void main(String[] args) {
-        Saab95 s = new Saab95();
-        System.out.println(s.getDirection());
-        s.turnLeft();
-        s.turnLeft();
-        System.out.println((int)s.getDirection());
-        s.turnLeft();
-        s.turnLeft();
-        System.out.println(-180%360);
+        LinkedList<Vehicles> cars = new LinkedList<>();
+        cars.add(new Volvo240());
+        cars.add(new Saab95());
+
+
 
     }
 
-    }
+
+}
 
 
 

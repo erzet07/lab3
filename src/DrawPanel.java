@@ -31,14 +31,18 @@ public class DrawPanel extends JPanel{
 
     // TODO: Make this general for all cars
      void  moveCar(int x, int y,Car car){
+
+
          if (car instanceof Saab95) {
              saabPoint.y = y;
              saabPoint.x = x;
          }
+
          else if (car instanceof Volvo240) {
              volvoPoint.y = y;
              volvoPoint.x = x;
          }
+
          else if (car instanceof Scania) {
              scaniaPoint.x = x;
              scaniaPoint.y = y;
@@ -83,6 +87,7 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+
         g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
 
         g.drawImage(saabImage, saabPoint.x, saabPoint.y+100, null);

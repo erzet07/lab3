@@ -26,6 +26,10 @@ public class Verkstad <T extends Car>  implements bilVerkstad<T>{
         bilLista.remove(bilTyp);
     }
 
+    public static void main(String[] args) {
+        Verkstad<Car> x = new Verkstad<>();
+        x.taInBil(new Volvo240());
 
+    }
 }
 
