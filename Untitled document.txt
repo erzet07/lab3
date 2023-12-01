@@ -1,0 +1,9 @@
+﻿Refraktoriseringsplan
+
+
+* Flytta över alla actionlisteners från CarView till CarController.
+* Ta bort klassen Car och implementera ett nytt interface isCar för att följa OCP.
+* Ta bort interfacet BilVerkstad för att den egentligen inte fyller någon funktion i detta program. Fanns mer för att agera som ett blueprint vid utökning av programmet om man ville göra ytterligare verkstäder.
+* Gör så att CarView, drawPanel och CarController inte har objekt av varandra i sig utan istället har ett "usage-dependency"
+* Lägg gas i movable för att bättre följa bridge pattern.
+* * Refaktorisera diverse kod för att göra den mer lättläst.
